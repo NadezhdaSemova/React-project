@@ -1,23 +1,16 @@
-import { useEffect, useState } from 'react';
+
 import './home.css';
-import { getAll } from '../../../service/homeService';
+
 import HomeTopPlaces from './HomeTopPlaces';
 
-export default function Home() {
+export default function Home({
+    places,
+}) {
 
-    const [places, setPlaces] = useState([]);
-
-    useEffect(() => {
-        getAll().then(place => {
-            setPlaces(Object.values(place));
-        })
-            .catch(err => {
-                console.log(err)
-            })
-    }, [])
-
+    
     const treePlaces = places.sort((a, b) => b.likes - a.likes).slice(0, 3);
     console.log(treePlaces);
+    
 
     return (
         <section className="slides">

@@ -1,4 +1,7 @@
 import './header.css';
+import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEarthAmerica } from '@fortawesome/free-solid-svg-icons';
 
 export default function Header() {
     return (
@@ -6,18 +9,24 @@ export default function Header() {
             <div className="container">
                 <div className="navigation-bar">
                     <div className="logo">
-                        <i className="fa-solid fa-earth-europe"></i>
+                        <FontAwesomeIcon icon={faEarthAmerica} />
                     </div>
                     <div className="navigation-menu">
                         <ul>
-                            <li><a className="nav-button block" href="home">Home</a></li>
-                            <li><a className="nav-button block" href="place">Places</a></li>
-                            <li><a className="nav-button block" href="login">Login</a></li>
-                            <li><a className="nav-button block" href="registration">Registration</a></li>
-                            <li><a className="nav-button block" href="logout">Logout</a></li>
-                            <li><a className="nav-button block" href="profile">Profile</a></li >
-                            <li><a className="nav-button block" href="about">About</a></li >
-                            <li><a className="nav-button block" href="contact">Contact</a></li>
+
+                            <li><NavLink
+                                className="nav-button block"
+                                style={({ isActive }) => ({ color: isActive ? "black" : "white" })}
+                                to="/">
+                                Home
+                            </NavLink></li>
+                            <li><NavLink className="nav-button block" style={({ isActive }) => ({ color: isActive ? "black" : "white" })} to="/places">Places</NavLink></li>
+                            <li><NavLink className="nav-button block" style={({ isActive }) => ({ color: isActive ? "black" : "white" })} to="/login">Login</NavLink></li>
+                            <li><NavLink className="nav-button block" style={({ isActive }) => ({ color: isActive ? "black" : "white" })} to="/registration">Registration</NavLink></li>
+                            <li><NavLink className="nav-button block" style={({ isActive }) => ({ color: isActive ? "black" : "white" })} to="/logout">Logout</NavLink></li>
+                            <li><NavLink className="nav-button block" style={({ isActive }) => ({ color: isActive ? "black" : "white" })} to="/profile">Profile</NavLink></li >
+                            <li><NavLink className="nav-button block" style={({ isActive }) => ({ color: isActive ? "black" : "white" })} to="/about">About</NavLink></li >
+                            <li><NavLink className="nav-button block" style={({ isActive }) => ({ color: isActive ? "black" : "white" })} to="/contact">Contact</NavLink></li>
                         </ul >
                     </div >
                 </div >

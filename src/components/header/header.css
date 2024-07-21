@@ -30,7 +30,7 @@
       border-radius: 0.5em;
     }
     
-    .logo i {
+    .logo {
       font-size: 5em;
       color: #39a7a7;
     }
@@ -40,22 +40,3 @@
       ;
     }
     
-    @media (max-width: 600px) {
-      .navigation-bar{
-        flex-direction: column;
-        gap: 0.5;
-      }
-      .navigation-menu ul{
-        flex-direction: column;
-        gap: 0.2em;
-      }
-
-      .navigation-menu ul li {
-        
-        flex: 0 0 3.5em;
-        
-      }
-
-      
-      
-    }

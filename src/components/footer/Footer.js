@@ -1,4 +1,7 @@
 import './footer.css';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faEarthEurope} from '@fortawesome/free-solid-svg-icons';
+import {faFacebook, faInstagram, faYoutube} from '@fortawesome/free-brands-svg-icons'
 
 export default function Footer() {
     return (
@@ -6,13 +9,14 @@ export default function Footer() {
             <div className="container">
                 <div className="items">
                     <div className="logo">
-                        <i className="fa-solid fa-earth-europe"></i>
+                    <FontAwesomeIcon icon={faEarthEurope} />
                     </div>
 
                     <div className="logos">
-                        <i className="fa-brands fa-instagram"></i>
-                        <i className="fa-brands fa-square-facebook"></i>
-                        <i className="fa-brands fa-youtube"></i>
+                        
+                    <i><FontAwesomeIcon icon={faInstagram} className='social-logos'/></i>
+                    <i><FontAwesomeIcon icon={faFacebook} className='social-logos'/></i>
+                    <i><FontAwesomeIcon icon={faYoutube} className='social-logos'/></i>
                     </div>
 
                 </div>
