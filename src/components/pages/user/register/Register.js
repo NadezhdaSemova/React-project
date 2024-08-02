@@ -1,19 +1,38 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import './register.css';
 import { useState } from 'react';
+import { registerSubmit } from '../../../../service/userService';
 
-export default function Register() {
+export default function Register({
+    setLogin,
+}) {
 
-const [registerForm, setRegisterForm] = useState({
-    userName: '',
+    const navigate = useNavigate()
 
-});
+    const [registerForm, setRegisterForm] = useState({
+        user: '',
+        email: '',
+        password: '',
+        repeatPassword: '',
+    });
 
-console.log(setRegisterForm);
+    const [auth, setAuth] = useState({});
 
-// const setForm = (e) => {
-//     setRegisterForm(state => ({...state, [e.target.name]: e.target.value}))
-// }
+    const setForm = (e) => {
+        setRegisterForm(state => ({ ...state, [e.target.name]: e.target.value }))
+    }
+
+    const submitForm = async (e) => {
+        e.preventDefault();
+
+        const result = await registerSubmit(registerForm);
+        setAuth(result);
+        localStorage.setItem('id', result._id);
+        localStorage.setItem('token', result.token);
+        localStorage.setItem('email', result.email);
+        setLogin();
+        navigate('/');
+    }
 
     return (
         <section className="site-registration">
@@ -23,24 +42,42 @@ console.log(setRegisterForm);
                         <input type="checkbox" id="chk" aria-hidden="true" />
 
                         <div className="signup">
-                            <form>
+                            <form method='POST' onSubmit={(e) => submitForm(e)}>
                                 <label htmlFor="chk" aria-hidden="true">Registration</label>
-                                <input 
-                                type="text" 
-                                name="txt" 
-                                placeholder="User name"
-                                // value={userName}
-                                // onChange={setForm}
+                                <input
+                                    type="text"
+                                    name="username"
+                                    placeholder="Username"
+                                    value={registerForm.user}
+                                    onChange={(e) => setForm(e)}
                                 />
-                                <div className="error">Username is require</div>
+                                {/* <div className="error">Username is require</div> */}
 
-                                <input type="email" name="email" placeholder="Email" />
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="Email"
+                                    value={registerForm.email}
+                                    onChange={(e) => setForm(e)}
+                                />
+
                                 {/* <div className="error" >Email is not correct</div> */}
 
-                                <input type="password" name="password" placeholder="Password" />
+                                <input
+                                    type="password"
+                                    name="password"
+                                    placeholder="Password"
+                                    value={registerForm.password}
+                                    onChange={(e) => setForm(e)} />
                                 {/* <div className="error">Password must have at least 5 symbols</div> */}
 
-                                <input type="password" name="repeatPassword" placeholder="Repeat password" />
+                                <input
+                                    type="password"
+                                    name="repeatPassword"
+                                    placeholder="Repeat password"
+                                    value={registerForm.repeatPassword}
+                                    onChange={(e) => setForm(e)}
+                                />
                                 {/* <div className="error" >Password mismatch</div> */}
                                 <button>Sign up</button>
 

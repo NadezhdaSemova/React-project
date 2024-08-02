@@ -1,14 +1,11 @@
 
+import { Places } from '../../../../service/placeService';
 import GalleryCard from './GalleryCard';
 import './gallery.css';
 
 
-export default function Gallery({
-    places,
-}) {
-
-    console.log(places)
-
+export default function Gallery() {
+    const places = Places();
     return (
         <>
             <div className="create">

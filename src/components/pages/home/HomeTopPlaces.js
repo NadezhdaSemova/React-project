@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom'
 
 export default function HomeTopPlaces({
     place,
+    isLogin
 }) {
 
     return (
@@ -20,7 +21,7 @@ export default function HomeTopPlaces({
             <FontAwesomeIcon icon={faThumbsUp} />
                 <p>{place.likes}</p>
             </div>
-            <Link to='/about'>Read about place</Link>
+            {isLogin && <Link to='/about'>Read about place</Link>}
         </div>
 
     )
